@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  db:
+  postgres:
     build:
       args:
         - DB_LANG=ja_JP
@@ -10,6 +10,7 @@ services:
     ports:
       - 5432:5432
     environment:
-      - POSTGRES_PASSWORD=passw0rd
-    volumes:
-      - ./init:/docker-entrypoint-initdb.d
+      - POSTGRES_USER=user
+      - POSTGRES_DB=SAMPLE
+    restart: always
+
